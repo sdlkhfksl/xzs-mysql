@@ -54,7 +54,8 @@ export default {
       listLoading: true,
       subjectList: [],
       tableData: [],
-      total: 0
+      total: 0,
+      favoriteVersion: 0
     }
   },
   computed: {
@@ -62,6 +63,7 @@ export default {
       paperTypeEnum: state => state.exam.examPaper.paperTypeEnum
     }),
     sortedTableData () {
+      this.favoriteVersion
       return sortByFavorite(this.tableData)
     }
   },
@@ -105,6 +107,7 @@ export default {
         subjectId: row.subjectId
       })
       if (result) {
+        this.favoriteVersion++
         this.$message({
           message: this.isPaperFavorite(row.id) ? '收藏成功' : '已取消收藏',
           type: 'success',
