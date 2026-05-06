@@ -20,6 +20,8 @@
         <java.version>1.8</java.version>
         <mysql.version>8.0.17</mysql.version>
         <spring.boot.version>2.1.6.RELEASE</spring.boot.version>
+        <!-- Preserve previous default: unit tests off unless -Dskip.unit.tests=false -->
+        <skip.unit.tests>true</skip.unit.tests>
     </properties>
 
 
@@ -181,7 +183,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <skipTests>true</skipTests>
+                    <skipTests>${skip.unit.tests}</skipTests>
                 </configuration>
             </plugin>
         </plugins>
